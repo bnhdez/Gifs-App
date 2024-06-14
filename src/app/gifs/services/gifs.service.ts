@@ -21,16 +21,16 @@ export class GifsService {
 
     //agrega nuevo tag al inicio
     this._tagsHistory.unshift( tag );
+
+    //recorta el array hasta los 10 elementos
+    this._tagsHistory = this.tagsHistory.splice( 0,10 );
   }
 
-  //agrega tag al principio del array para guardarlo en ese array
   public searchTag( tag:string ):void {
-    //si no escibre no pasa nada
+    //si no escribe no pasa nada
     if ( tag.length === 0 ) return;
 
     this.organizeHistory(tag);
-
-    this._tagsHistory.unshift( tag );
   }
 
 
