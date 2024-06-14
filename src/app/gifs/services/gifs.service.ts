@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable({providedIn: 'root'})
 export class GifsService {
   private _tagsHistory:string[] = [];
+  //GIPHY API WEB TOKEN
+  private apiKey: string = 'icgYhKfB1SK6cdNTpMRFioQcwotZekCY';
 
   get tagsHistory(){
     return [...this._tagsHistory];
