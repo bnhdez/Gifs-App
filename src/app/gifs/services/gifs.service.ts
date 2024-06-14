@@ -8,6 +8,7 @@ export class GifsService {
     return [...this._tagsHistory];
   }
 
+  //agrega tag al principio del array para guardarlo en ese array
   public searchTag( tag:string ):void {
     this._tagsHistory.unshift( tag );
   }
