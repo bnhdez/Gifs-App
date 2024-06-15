@@ -42,9 +42,16 @@ export class GifsService {
 
     this.organizeHistory(tag);
 
+    //FORMA 1
     fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10')
       .then( res => res.json() )
       .then( data => console.log( data ) );
+
+    //FORMA 2
+    const resp = await fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10');
+    const data = await resp.json();
+    console.log( data );
+
   }
 
 
