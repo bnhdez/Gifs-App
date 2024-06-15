@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
@@ -5,6 +6,8 @@ export class GifsService {
   private _tagsHistory:string[] = [];
   //GIPHY API WEB TOKEN
   private apiKey: string = 'icgYhKfB1SK6cdNTpMRFioQcwotZekCY';
+
+  constructor ( private http:HttpClient ){ }
 
   get tagsHistory(){
     return [...this._tagsHistory];
