@@ -28,11 +28,23 @@ export class GifsService {
     this._tagsHistory = this.tagsHistory.splice( 0,10 );
   }
 
-  public searchTag( tag:string ):void {
+  // public searchTag( tag:string ):void {
+  //   //si no escribe no pasa nada
+  //   if ( tag.length === 0 ) return;
+
+  //   this.organizeHistory(tag);
+  // }
+
+  //forma javascript
+  async searchTag(tag: string):Promise<void> {
     //si no escribe no pasa nada
-    if ( tag.length === 0 ) return;
+    if (tag.length === 0) return;
 
     this.organizeHistory(tag);
+
+    fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10')
+      .then( res => res.json() )
+      .then( data => console.log( data ) );
   }
 
 
