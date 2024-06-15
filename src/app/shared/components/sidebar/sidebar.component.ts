@@ -15,4 +15,9 @@ export class SidebarComponent {
     return this.gifsService.tagsHistory;
   }
 
+  //nuevo metodo para mandar a traer metodo searchTag desde gif-service
+  searchTag( tag:string ){
+    this.gifsService.searchTag( tag );
+  }
+
 }
