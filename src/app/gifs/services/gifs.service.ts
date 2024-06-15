@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SearchResponse } from '../interfaces/gifs.interfaces';
 
 @Injectable({providedIn: 'root'})
 export class GifsService {
@@ -45,9 +46,11 @@ export class GifsService {
       .set('q', tag)
 
     //OBSERVABLE: puede estar emitiendo diferentes valores
-    this.http.get(`${this.serviceUrl}/search`, { params })
+    //get dato generico de tipo SearchResponse interfaz
+    //objetos dentro tambien son de este dato
+    this.http.get<SearchResponse>(`${this.serviceUrl}/search`, { params })
       .subscribe( resp => {
-        console.log({resp});
+        console.log(resp);
       })
   }
 
