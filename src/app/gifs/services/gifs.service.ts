@@ -31,31 +31,37 @@ export class GifsService {
     this._tagsHistory = this.tagsHistory.splice( 0,10 );
   }
 
-  // public searchTag( tag:string ):void {
-  //   //si no escribe no pasa nada
-  //   if ( tag.length === 0 ) return;
-
-  //   this.organizeHistory(tag);
-  // }
-
-  //forma javascript
-  async searchTag(tag: string):Promise<void> {
+  public searchTag( tag:string ):void {
     //si no escribe no pasa nada
-    if (tag.length === 0) return;
+    if ( tag.length === 0 ) return;
 
     this.organizeHistory(tag);
 
-    //FORMA 1
-    fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10')
-      .then( res => res.json() )
-      .then( data => console.log( data ) );
-
-    //FORMA 2
-    const resp = await fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10');
-    const data = await resp.json();
-    console.log( data );
-
+    //OBSERVABLE: puede estar emitiendo diferentes valores
+    this.http.get('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10')
+      .subscribe( resp => {
+        console.log(resp);
+      })
   }
+
+  // //forma javascript
+  // async searchTag(tag: string):Promise<void> {
+  //   //si no escribe no pasa nada
+  //   if (tag.length === 0) return;
+
+  //   this.organizeHistory(tag);
+
+  //   //FORMA 1
+  //   fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10')
+  //     .then( res => res.json() )
+  //     .then( data => console.log( data ) );
+
+  //   //FORMA 2
+  //   const resp = await fetch('https://api.giphy.com/v1/gifs/search?api_key=icgYhKfB1SK6cdNTpMRFioQcwotZekCY&q=cheeseburgers&limit=10');
+  //   const data = await resp.json();
+  //   console.log( data );
+
+  // }
 
 
 }
