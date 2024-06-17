@@ -1,9 +1,12 @@
 <div class="d-flex justify-content-center">
+  <!-- display si hasloaded esta en true, no pasa nada -->
+  <!-- si hasloaded esta en false, 'none' la oculta -->
   <img
     [src]="url"
     class="card-img-top"
     [alt]="alt"
     (load)="onLoad()"
+    [ngStyle]="{ display: hasLoaded ? '' : 'none' }"
   />
 
   <img
